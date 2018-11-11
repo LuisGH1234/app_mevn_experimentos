@@ -1,0 +1,19 @@
+https://www.youtube.com/watch?v=ARIzrNwA5HQ - Parte 1
+mongodb: min -> 35
+
+bd: mongodb
+IP address: 190.237.43.231
+username: LuisGH1234
+password: 7PbvVMncmsE6Ttj
+
+bubel: transpila codigo (traducir)
+
+npm install:
+    babel-loader: transpila codigo (traducir) - loader: complementos de webpack para poder agregarles funcionalidad con la ultima version de js
+    babel-preset-env: babel traducira con la ultima sintaxis de javascript
+    vue-loader: webpack tambien sera el encargado de traducir archivos .vue
+    vue-template-compiler: complemento para vue
+-D: se guaradra como dependencia de desarrollo
+
+"webpack": "webpack --mode development --watch":
+    --watch se queda esperando hasta que haga un cambio para actualizar el archivo, al igual que nodemon
