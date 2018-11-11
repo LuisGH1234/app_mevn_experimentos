@@ -16,6 +16,9 @@
                                 </div>
                                 <button class="btn btn-primary btn-block" @click.stop.prevent="sigin">Iniciar Sesion</button>
                             </form>
+                            <template v-if="incorrectLogin == true">
+                                <h1>Usario o Contraseña Incorrecta</h1>
+                            </template>
                         </div>
                     </div>
                 </div>
