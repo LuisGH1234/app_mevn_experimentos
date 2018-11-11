@@ -30,6 +30,15 @@ module.exports = {
                 test: /\.vue$/,
                 //lo lea a travez de un loader - pero requiere de un plugin ya instalado con vue-loader
                 loader: 'vue-loader'
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {}
+                    }
+                ]
             }
         ]
     },

@@ -86,6 +86,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/babel-loader/lib/index.js!./src/app/components/js/login.js?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./src/app/components/js/login.js?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nvar User = __webpack_require__(/*! ../../models/User */ \"./src/app/models/User.js\");\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  data: function data() {\n    return {\n      user: new User()\n    };\n  },\n  methods: {\n    sigin: function sigin() {}\n  }\n});\n\n//# sourceURL=webpack:///./src/app/components/js/login.js?./node_modules/babel-loader/lib");
+
+/***/ }),
+
 /***/ "./node_modules/process/browser.js":
 /*!*****************************************!*\
   !*** ./node_modules/process/browser.js ***!
@@ -127,7 +139,7 @@ eval("/* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"render\", function() { return render; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"staticRenderFns\", function() { return staticRenderFns; });\nvar render = function() {\n  var _vm = this\n  var _h = _vm.$createElement\n  var _c = _vm._self._c || _h\n  return _c(\"h1\", [_vm._v(\"Login with vue\")])\n}\nvar staticRenderFns = []\nrender._withStripped = true\n\n\n\n//# sourceURL=webpack:///./src/app/components/Login.vue?./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"render\", function() { return render; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"staticRenderFns\", function() { return staticRenderFns; });\nvar render = function() {\n  var _vm = this\n  var _h = _vm.$createElement\n  var _c = _vm._self._c || _h\n  return _c(\"div\", [\n    _c(\"div\", { staticClass: \"container\" }, [\n      _c(\"div\", { staticClass: \"row pt-5\" }, [\n        _c(\"img\", { attrs: { src: \"images/movie-night.png\" } }),\n        _vm._v(\" \"),\n        _c(\"div\", { staticClass: \"col-md-5\" }, [\n          _c(\"div\", { staticClass: \"card\" }, [\n            _c(\"div\", { staticClass: \"card-body\" }, [\n              _c(\n                \"form\",\n                {\n                  on: {\n                    submit: function($event) {\n                      $event.preventDefault()\n                      return _vm.sigin($event)\n                    }\n                  }\n                },\n                [\n                  _c(\"div\", { staticClass: \"form-group\" }, [\n                    _c(\"input\", {\n                      directives: [\n                        {\n                          name: \"model\",\n                          rawName: \"v-model\",\n                          value: _vm.user.email,\n                          expression: \"user.email\"\n                        }\n                      ],\n                      staticClass: \"form-control\",\n                      attrs: { type: \"text\", placeholder: \"Email\" },\n                      domProps: { value: _vm.user.email },\n                      on: {\n                        input: function($event) {\n                          if ($event.target.composing) {\n                            return\n                          }\n                          _vm.$set(_vm.user, \"email\", $event.target.value)\n                        }\n                      }\n                    })\n                  ]),\n                  _vm._v(\" \"),\n                  _c(\"div\", { staticClass: \"form-group\" }, [\n                    _c(\"input\", {\n                      directives: [\n                        {\n                          name: \"model\",\n                          rawName: \"v-model\",\n                          value: _vm.user.password,\n                          expression: \"user.password\"\n                        }\n                      ],\n                      staticClass: \"form-control\",\n                      attrs: { type: \"text\", placeholder: \"Constraseña\" },\n                      domProps: { value: _vm.user.password },\n                      on: {\n                        input: function($event) {\n                          if ($event.target.composing) {\n                            return\n                          }\n                          _vm.$set(_vm.user, \"password\", $event.target.value)\n                        }\n                      }\n                    })\n                  ]),\n                  _vm._v(\" \"),\n                  _c(\"button\", { staticClass: \"btn btn-primary btn-block\" }, [\n                    _vm._v(\"Send\")\n                  ])\n                ]\n              )\n            ])\n          ])\n        ])\n      ])\n    ])\n  ])\n}\nvar staticRenderFns = []\nrender._withStripped = true\n\n\n\n//# sourceURL=webpack:///./src/app/components/Login.vue?./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options");
 
 /***/ }),
 
@@ -174,7 +186,7 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Login_vue_vue_type_template_id_511e5d97___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Login.vue?vue&type=template&id=511e5d97& */ \"./src/app/components/Login.vue?vue&type=template&id=511e5d97&\");\n/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ \"./node_modules/vue-loader/lib/runtime/componentNormalizer.js\");\n\nvar script = {}\n\n\n/* normalize component */\n\nvar component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(\n  script,\n  _Login_vue_vue_type_template_id_511e5d97___WEBPACK_IMPORTED_MODULE_0__[\"render\"],\n  _Login_vue_vue_type_template_id_511e5d97___WEBPACK_IMPORTED_MODULE_0__[\"staticRenderFns\"],\n  false,\n  null,\n  null,\n  null\n  \n)\n\n/* hot reload */\nif (false) { var api; }\ncomponent.options.__file = \"src/app/components/Login.vue\"\n/* harmony default export */ __webpack_exports__[\"default\"] = (component.exports);\n\n//# sourceURL=webpack:///./src/app/components/Login.vue?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Login_vue_vue_type_template_id_511e5d97___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Login.vue?vue&type=template&id=511e5d97& */ \"./src/app/components/Login.vue?vue&type=template&id=511e5d97&\");\n/* harmony import */ var _js_login_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/login.js?vue&type=script&lang=js& */ \"./src/app/components/js/login.js?vue&type=script&lang=js&\");\n/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ \"./node_modules/vue-loader/lib/runtime/componentNormalizer.js\");\n\n\n\n\n\n/* normalize component */\n\nvar component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(\n  _js_login_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  _Login_vue_vue_type_template_id_511e5d97___WEBPACK_IMPORTED_MODULE_0__[\"render\"],\n  _Login_vue_vue_type_template_id_511e5d97___WEBPACK_IMPORTED_MODULE_0__[\"staticRenderFns\"],\n  false,\n  null,\n  null,\n  null\n  \n)\n\n/* hot reload */\nif (false) { var api; }\ncomponent.options.__file = \"src/app/components/Login.vue\"\n/* harmony default export */ __webpack_exports__[\"default\"] = (component.exports);\n\n//# sourceURL=webpack:///./src/app/components/Login.vue?");
 
 /***/ }),
 
@@ -190,6 +202,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _nod
 
 /***/ }),
 
+/***/ "./src/app/components/js/login.js?vue&type=script&lang=js&":
+/*!*****************************************************************!*\
+  !*** ./src/app/components/js/login.js?vue&type=script&lang=js& ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _node_modules_babel_loader_lib_index_js_login_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib!./login.js?vue&type=script&lang=js& */ \"./node_modules/babel-loader/lib/index.js!./src/app/components/js/login.js?vue&type=script&lang=js&\");\n/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__[\"default\"] = (_node_modules_babel_loader_lib_index_js_login_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[\"default\"]); \n\n//# sourceURL=webpack:///./src/app/components/js/login.js?");
+
+/***/ }),
+
 /***/ "./src/app/login.js":
 /*!**************************!*\
   !*** ./src/app/login.js ***!
@@ -199,6 +223,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _nod
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/vue/dist/vue.runtime.esm.js\");\n/* harmony import */ var _components_Login_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Login.vue */ \"./src/app/components/Login.vue\");\n//Archivo para renderizar el login\n\n\nnew vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({\n  render: function render(h) {\n    return h(_components_Login_vue__WEBPACK_IMPORTED_MODULE_1__[\"default\"]);\n  }\n}).$mount('#app-login');\n\n//# sourceURL=webpack:///./src/app/login.js?");
+
+/***/ }),
+
+/***/ "./src/app/models/User.js":
+/*!********************************!*\
+  !*** ./src/app/models/User.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nvar User = function User(email, password) {\n  _classCallCheck(this, User);\n\n  this.email = email || '';\n  this.password = password || '';\n};\n\nmodule.exports = User;\n\n//# sourceURL=webpack:///./src/app/models/User.js?");
 
 /***/ })
 
