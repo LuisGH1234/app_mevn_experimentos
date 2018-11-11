@@ -27,9 +27,18 @@ app.use(express.json());
 app.get('/login', (req, res) => {
     res.sendfile(__dirname + '/public/login.html');
 });
+app.post('/api/login', (req, res) => {
+    if (req.body.email == 'admin' && req.body.password == 'clave') {
+        res.json({ access: 'True' });
+    } else {
+        res.json({ access: 'Flase' });
+    }
+});
+
 app.get('/playlists', (req, res) => {
     res.sendfile(__dirname + '/public/index.html');
 });
+
 app.use('/api', require('./routes/playlist'));
 
 //Static files: 

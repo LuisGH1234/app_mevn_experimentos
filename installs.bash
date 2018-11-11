@@ -10,3 +10,4 @@ npm install babel-loader @babel/preset-env vue-loader vue-template-compiler -D
 npm install @babel/core -D
 npm install vue -D
 npm install file-loader -D
+npm install vue-router -D
