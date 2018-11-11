@@ -1,7 +1,9 @@
 <template>
     <div>
         <nav class="navbar navbar-light bg-light">
-            <a href="/" class="navbar-brand">MEVN Stack</a>
+            <div class="alert alert-light" role="alert" id="message-alert">
+                Biembenido!
+            </div>
         </nav>
         <div class="container">
             <div class="row pt-5">
