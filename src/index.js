@@ -13,6 +13,7 @@ mongoose.connect('mongodb+srv://LuisGH1234:7PbvVMncmsE6Ttj@cluster0-yldiz.mongod
     * process.env.PORT: contiene el puerto que nos da el servidor 
 */
 app.set('port', process.env.PORT || 3000);
+//app.set('view engine', 'html');
 
 //Middlewares
 /*
@@ -23,7 +24,13 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 //Routes
-app.use('/api', require('./routes/videotecs'));
+app.get('/login', (req, res) => {
+    res.sendfile(__dirname + '/public/login.html');
+});
+app.get('/playlists', (req, res) => {
+    res.sendfile(__dirname + '/public/index.html');
+});
+app.use('/api', require('./routes/playlist'));
 
 //Static files: 
 /* 

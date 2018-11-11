@@ -1,11 +1,15 @@
 const { VueLoaderPlugin } = require('vue-loader');
 module.exports = {
+    mode: 'development',
     //indico que archivo va a traducir
-    entry: './src/app/index.js',
+    entry: {
+        playlist: './src/app/index.js',
+        login: './src/app/login.js'
+    },
     //indica la salida del archivo traducido
     output: {
         path: `${__dirname}/src/public/js`,
-        filename:'bundle.js'
+        filename:'[name].bundle.js'
     },
     //indicarle los archivos a traducir del front y back end
     module: {

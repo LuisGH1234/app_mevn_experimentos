@@ -31,7 +31,7 @@ router.put('/playlists/:id', async (req, res) => {
 
 router.delete('/playlists/:id', async (req, res) => {
     console.log(req.params);
-    await Playlist.findOneAndDelete(req.params.id);
+    await Playlist.findByIdAndDelete(req.params.id);
     res.json({ status: 'Deleted' });
 });
 
