@@ -17,16 +17,16 @@ app.set('port', process.env.PORT || 3000);
 
 //Middlewares
 /*
-    * parametro dev en morgan indica que se quiere ver un mensaje corto por consola
+    * parametro dev en morgan indica que se quiere ver un mensaje cortop por consola
     * .json: cada vez que se envie un JSON al servidor este pueda entenderlo procesandolo
 */
 app.use(morgan('dev'));
 app.use(express.json());
 
 //Routes
-app.get('/login', (req, res) => {
+/*app.get('/login', (req, res) => {
     res.sendfile(__dirname + '/public/login.html');
-});
+});*/
 app.post('/api/login', (req, res) => {
     if (req.body.email == 'admin' && req.body.password == 'clave') {
         res.json({ access: 'True' });
@@ -35,9 +35,9 @@ app.post('/api/login', (req, res) => {
     }
 });
 
-app.get('/playlists', (req, res) => {
+/*app.get('/playlists', (req, res) => {
     res.sendfile(__dirname + '/public/index.html');
-});
+});*/
 
 app.use('/api', require('./routes/playlist'));
 
@@ -48,7 +48,7 @@ app.use('/api', require('./routes/playlist'));
     * __dirname es la ruta de en donde esta la carpeta que contiene este archivo index.js (Carpeta: src)
     * El servidor enviara la capreta public al navegador y este lee por defecto los .html
 */
-app.use(express.static(`${__dirname}/public`));
+app.use('/', express.static(`${__dirname}/public`));
 
 //Server init
 app.listen(app.get('port'), () => {

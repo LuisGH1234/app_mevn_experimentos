@@ -3,8 +3,7 @@ module.exports = {
     mode: 'development',
     //indico que archivo va a traducir
     entry: {
-        playlist: './src/app/index.js',
-        login: './src/app/login.js'
+        index: './src/app/index.js'
     },
     //indica la salida del archivo traducido
     output: {
