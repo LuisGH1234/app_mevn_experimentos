@@ -17,6 +17,14 @@
                             <template v-else>
                                 <button class="btn btn-primary btn-block">Update</button>
                             </template>
+                            <template>
+                                <div class="alert alert-primary" role="alert" v-if="successSend == 1" style="margin: 12pt">
+                                    Se guardo correctamente el cambio!
+                                </div>
+                                <div class="alert alert-warning" role="alert" v-if="successSend == 2" style="margin: 12pt">
+                                    El nombre contiene caracteres invalidos.
+                                </div>
+                            </template>
                         </form>
                     </div>
                 </div>
@@ -37,8 +45,8 @@
                             <td>{{ playlist.name }}</td>
                             <td>{{ playlist.description }}</td>
                             <td>
-                                <img src="images/favorite.png" alt="¿Favorite?" style="margin-left: 22pt" v-if="playlist.favorite" @click="setFavorite(1, index)">
-                                <img src="images/nofavorite.png" alt="¿Favorite?" style="margin-left: 22pt" v-else @click.stop.prevent="setFavorite(0, index)">
+                                <img src="images/favorite.png" alt="¿Favorite?" style="margin-left: 22pt" v-if="playlist.favorite == 'yes'" @click="setFavorite(1, index)" id="isFavorite">
+                                <img src="images/nofavorite.png" alt="¿Favorite?" style="margin-left: 22pt" v-else @click.stop.prevent="setFavorite(0, index)" id="isFavorite">
                             </td>
                             <td>
                                 <button class="btn btn-danger" @click="deletePlaylist(playlist._id)" :id="`playlist-${index}`">Delete</button>
@@ -53,10 +61,14 @@
 </template>
 
 <script>
+import request from '../requests.js';
+
 class Playlist {
-    constructor(name, description){
+    constructor(name, description, favorite, index_i){
         this.name = name || '';
         this.description = description || '';
+        this.favorite = favorite || 'no';
+        this.index_i = index_i || 0;
     }
 }
 
@@ -67,7 +79,8 @@ export default {
             playlist: new Playlist(),
             playlists: [],
             edit: false,
-            playlistToEdit: ''
+            playlistToEdit: '',
+            successSend: '0' //0: inactivo, 1: exitoso, 2: error
         }
     },
     created() {
@@ -76,8 +89,13 @@ export default {
     },
     methods: {
         sendPlaylist() {
+            if(this.playlist.name[0] == " "){
+                this.successSend = '2';
+                return;
+            }
             //metodo fetch hace requests HTTP - propio de js lo usa el navegador
             if (this.edit === false) { //no esta editando
+            this.playlist.favorite = 'no';
                 fetch('/api/playlists', {
                     method: 'POST',
                     body: JSON.stringify(this.playlist),
@@ -87,8 +105,10 @@ export default {
                     }
                 })
                 .then(res => res.json()) //convierto la respuesta a un JSON
-                .then(data => this.getPlaylists()) //como los datos cambiaron, entonces los vuelvo a obtener
-                .catch(err => console.log(err));
+                .then(data => {
+                    this.successSend = data.status == 'OK'? '1' : '2';
+                    this.getPlaylists();
+                }); //como los datos cambiaron, entonces los vuelvo a obtener
             } else {
                 fetch(`/api/playlists/${this.playlistToEdit}`, {
                     method: 'PUT',
@@ -100,12 +120,12 @@ export default {
                 })
                 .then(res => res.json())
                 .then(data => {
+                    this.successSend = data.status == 'OK'? '1' : '2';
                     this.edit = false;
                     this.playlistToEdit = '';
                     this.getPlaylists();
-                })
+                });
             }
-            
             this.playlist = new Playlist();
         },
         getPlaylists() {
@@ -113,7 +133,7 @@ export default {
             .then(res => res.json())
             .then(data => {
                 this.playlists = data;
-                console.log(this.playlists);
+                //console.log(this.playlists);
             })
             .catch(err => console.log(err));
         },
@@ -128,7 +148,7 @@ export default {
             .then(res => res.json())
             .then(data => {
                 this.getPlaylists();
-                console.log(data);
+                //console.log(data);
             })
             .catch(err => console.log(err));
         },
@@ -136,19 +156,25 @@ export default {
             fetch(`/api/playlists/${id}`)
             .then(res => res.json()) //llega en formato string y lo convierte JSON
             .then(data => { //data ya es el JSON que se convirtio anteriormente
-                this.playlist = new Playlist(data.name, data.description);
+                this.playlist = new Playlist(data.name, data.description, data.favorite, data.index_i);
                 this.playlistToEdit = data._id;
                 console.log(this.playlistToEdit);
                 this.edit = true;
             });
         },
         setFavorite(num, index) {
-            console.log(this.playlists[index]);
-            if (num == 1) {
-                this.playlists[index].favorite = false;
-                return;
-            }
-            this.playlists[index].favorite = true;
+            const aux =  this.playlists[index];
+            let playlist = new Playlist(aux.name, aux.description, aux.favorite == 'yes'? 'no' : 'yes', aux.index_i);
+            fetch(`/api/playlists/${this.playlists[index]._id}`, {
+                    method: 'PUT',
+                    body: JSON.stringify(playlist),
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+            })
+            .then(res => res.json())
+            .then(data => this.getPlaylists());
         }
     }
 }

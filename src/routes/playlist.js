@@ -16,23 +16,28 @@ router.get('/playlists/:id', async (req, res) => {
 });
 
 router.post('/playlists', async (req, res) => {
+    if (req.body.name[0] == " "){
+        return res.json({ status: 'ERROR' });
+    }
     const playlist = new Playlist(req.body);
     //console.log(playlist);
     await playlist.save();
-    res.json({ status:'Saved' });
+    res.json({ status:'OK' });
 });
 
 router.put('/playlists/:id', async (req, res) => {
-    //console.log(req.params);
+    if (req.body.name[0] == " "){
+        return res.json({ status: 'ERROR' });
+    }
     //console.log(req.body);
     await Playlist.findByIdAndUpdate(req.params.id, req.body);
-    res.json({ statuc: 'Updated' });
+    res.json({ status: 'OK' });
 });
 
 router.delete('/playlists/:id', async (req, res) => {
     //console.log(req.params);
     await Playlist.findByIdAndDelete(req.params.id);
-    res.json({ status: 'Deleted' });
+    res.json({ status: 'OK' });
 });
 
 module.exports = router;
