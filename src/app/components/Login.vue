@@ -22,7 +22,7 @@
                             </form>
                             <template v-if="incorrectLogin == true">
                                 <div class="alert alert-danger" role="alert" id="message-alert">
-                                    Usuario o Contraseña Incorrecta {{ vprp }}
+                                    Usuario o Contraseña Incorrecta
                                 </div>
                             </template>
                         </div>
@@ -41,9 +41,9 @@ class User {
 }
 
 export default {
-    props: {
+    /*props: {
         vprp: String
-    },
+    },*/
     data() {
         return {
             user: new User(),

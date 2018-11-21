@@ -27,7 +27,7 @@
         </div>
 
         <template v-if="logged == false">
-            <v-login @new="setLogged" vprp=""></v-login>
+            <v-login @new="setLogged"></v-login>
         </template>
 
         <router-view v-if="logged == true"></router-view>
