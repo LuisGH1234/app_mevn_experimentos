@@ -6,23 +6,26 @@
                     <div class="card-body">
                         <form @submit.prevent="sendPlaylist">
                             <div class="form-group">
-                                <input v-model="playlist.name" type="text" placeholder="Inserta el nombre" class="form-control">
+                                <input v-model="playlist.name" id="campoNombre" type="text" placeholder="Inserta el nombre" class="form-control">
                             </div>
                             <div class="form-group">
-                                <textarea v-model="playlist.description" cols="30" rows="10" class="form-control" placeholder="Inserta una descripcion"></textarea>
+                                <textarea v-model="playlist.description" id="campoDescripcion" cols="30" rows="10" class="form-control" placeholder="Inserta una descripcion"></textarea>
                             </div>
                             <template v-if="edit == false">
-                                <button class="btn btn-primary btn-block">Send</button>
+                                <button id="btnGuardar" class="btn btn-primary btn-block">Send</button>
                             </template>
                             <template v-else>
-                                <button class="btn btn-primary btn-block">Update</button>
+                                <button id="btnGuardar" class="btn btn-primary btn-block">Update</button>
                             </template>
                             <template>
-                                <div class="alert alert-primary" role="alert" v-if="successSend == 1" style="margin: 12pt">
-                                    Se guardo correctamente el cambio!
+                                <div class="alert alert-primary" role="alert" id="mensajeRequest" v-if="successSend == 1" style="margin: 12pt">
+                                    Se guardo correctamente!
                                 </div>
-                                <div class="alert alert-warning" role="alert" v-if="successSend == 2" style="margin: 12pt">
+                                <div class="alert alert-warning" role="alert" id="mensajeRequest" v-if="successSend == 2" style="margin: 12pt">
                                     El nombre contiene caracteres invalidos.
+                                </div>
+                                <div class="alert alert-warning" role="alert" id="mensajeRequest" v-if="successDelete" style="margin: 12pt">
+                                    Se eliminó de manera correcta la Playlist
                                 </div>
                             </template>
                         </form>
@@ -45,12 +48,12 @@
                             <td>{{ playlist.name }}</td>
                             <td>{{ playlist.description }}</td>
                             <td>
-                                <img src="images/favorite.png" alt="¿Favorite?" style="margin-left: 22pt" v-if="playlist.favorite == 'yes'" @click="setFavorite(1, index)" id="isFavorite">
-                                <img src="images/nofavorite.png" alt="¿Favorite?" style="margin-left: 22pt" v-else @click.stop.prevent="setFavorite(0, index)" id="isFavorite">
+                                <img src="images/favorite.png" alt="¿Favorite?" style="margin-left: 22pt" v-if="playlist.favorite == 'yes'" @click="setFavorite(1, index)" :id="`isFavorite-${index}`">
+                                <img src="images/nofavorite.png" alt="¿Favorite?" style="margin-left: 22pt" v-else @click.stop.prevent="setFavorite(0, index)" :id="`isFavorite-${index}`">
                             </td>
                             <td>
-                                <button class="btn btn-danger" @click="deletePlaylist(playlist._id)" :id="`playlist-${index}`">Delete</button>
-                                <button class="btn btn-secondary" @click="editPlaylist(playlist._id)">Edit</button>
+                                <button class="btn btn-danger" @click="deletePlaylist(playlist._id)" :id="`delete-${index}`">Delete</button>
+                                <button class="btn btn-secondary" @click="editPlaylist(playlist._id)" :id="`edit-${index}`">Edit</button>
                             </td>
                         </tr>
                     </tbody>
@@ -80,7 +83,8 @@ export default {
             playlists: [],
             edit: false,
             playlistToEdit: '',
-            successSend: '0' //0: inactivo, 1: exitoso, 2: error
+            successSend: '0', //0: inactivo, 1: exitoso, 2: error
+            successDelete: false
         }
     },
     created() {
@@ -90,6 +94,7 @@ export default {
     methods: {
         sendPlaylist() {
             if(this.playlist.name[0] == " "){
+                this.successDelete = false;
                 this.successSend = '2';
                 return;
             }
@@ -106,6 +111,7 @@ export default {
                 })
                 .then(res => res.json()) //convierto la respuesta a un JSON
                 .then(data => {
+                    this.successDelete = false;
                     this.successSend = data.status == 'OK'? '1' : '2';
                     this.getPlaylists();
                 }); //como los datos cambiaron, entonces los vuelvo a obtener
@@ -120,6 +126,7 @@ export default {
                 })
                 .then(res => res.json())
                 .then(data => {
+                    this.successDelete = false;
                     this.successSend = data.status == 'OK'? '1' : '2';
                     this.edit = false;
                     this.playlistToEdit = '';
@@ -147,6 +154,8 @@ export default {
             })
             .then(res => res.json())
             .then(data => {
+                this.successSend = '0';
+                this.successDelete = true;
                 this.getPlaylists();
                 //console.log(data);
             })

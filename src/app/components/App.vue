@@ -10,16 +10,16 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                     <li class="nav-item">
-                        <router-link class="nav-item nav-link" to="/home" v-if="logged == true" id="home">Home</router-link>
+                        <router-link class="nav-item nav-link" to="/home" v-if="logged == true" id="homeRoute">Home</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-item nav-link" to="/playlists" v-if="logged == true" id="playlist">Playlists</router-link>
+                        <router-link class="nav-item nav-link" to="/playlists" v-if="logged == true" id="playlistRoute">Playlists</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-item nav-link" to="/login" v-if="logged == false" id="login">Login</router-link>
+                        <router-link class="nav-item nav-link" to="/login" v-if="logged == false" id="loginRoute">Login</router-link>
                     </li>
                     <li class="nav-item">
-                        <button type="button" class="btn btn-warning" @click="logout" v-if="logged == true" id="logout">Logout</button>
+                        <button type="button" class="btn btn-warning" @click="logout" v-if="logged == true" id="logoutRoute">Logout</button>
                     </li>
                     </ul>
                 </div>
@@ -45,7 +45,7 @@ export default {
 
     data(){
         return {
-            logged: true
+            logged: false
         }
     },
     methods: {

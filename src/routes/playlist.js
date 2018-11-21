@@ -16,7 +16,7 @@ router.get('/playlists/:id', async (req, res) => {
 });
 
 router.post('/playlists', async (req, res) => {
-    if (req.body.name[0] == " "){
+    if (req.body.name[0] == " " || req.body.name == ""){
         return res.json({ status: 'ERROR' });
     }
     const playlist = new Playlist(req.body);

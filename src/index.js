@@ -28,6 +28,10 @@ app.use(express.json());
     res.sendfile(__dirname + '/public/login.html');
 });*/
 app.post('/api/login', (req, res) => {
+    /*if (req.session.intentosLogin >= 7  && req.session.interval < 0.5) {
+        app.blockClient(req.connection.remoteAddress).then(time => time.setMin(30));
+        return;
+    }*/
     if (req.body.email == 'admin' && req.body.password == 'clave') {
         res.json({ access: 'True' });
     } else {
